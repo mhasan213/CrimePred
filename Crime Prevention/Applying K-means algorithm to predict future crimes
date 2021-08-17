@@ -1,0 +1,56 @@
+import pandas
+import matplotlib
+
+import pylab as pl
+
+from sklearn.cluster import KMeans
+
+from sklearn.decomposition import PCA
+
+variables = pandas.read_csv('criminal_data.csv')
+
+Y = variables[['Latitude']]
+
+X = variables[['Longitude']]
+
+Nc = range(1, 50)
+
+kmeans = [KMeans(n_clusters=i) for i in Nc]
+
+kmeans
+
+score = [kmeans[i].fit(Y).score(Y) for i in range(len(kmeans))]
+
+score
+
+pl.plot(Nc,score)
+
+pl.xlabel('Number of Clusters')
+
+pl.ylabel('Score')
+
+pl.title('Elbow Curve')
+
+pca = PCA(n_components=1).fit(Y)
+
+pca_d = pca.transform(Y)
+
+pca_c = pca.transform(X)
+
+kmeans=KMeans(n_clusters=4)
+
+kmeansoutput=kmeans.fit(Y)
+
+kmeansoutput
+
+pl.figure('4 Cluster K-Means')
+
+pl.scatter(pca_c[:, 0], pca_d[:, 0], c=kmeansoutput.labels_)
+
+pl.xlabel('Dividend Yield')
+
+pl.ylabel('Returns')
+
+pl.title('4 Cluster K-Means')
+
+pl.show()

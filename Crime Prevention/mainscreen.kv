@@ -1,0 +1,302 @@
+<Button>:                                                               #Setting button details for all the buttons
+
+	color: 0,0,0,1.0
+	size_hint: 0.5, 0.1
+	background_color: (0,128,128,0.2)
+	font_name: 'Arial'
+	bold: 'bool'
+<MyPopup@Popup>:                                                         #For a popup window
+    auto_dismiss: False
+    Button:
+        text: 'Close me!'
+        on_release: root.dismiss()
+
+
+
+
+<MyScreenManager>:                                                         #ScreenManager holding all the screens
+    FirstScreen:                                                         
+    SecondScreen:
+    ThirdScreen:
+    FourthScreen:
+    FifthScreen:
+    SixthScreen:
+<FirstScreen>:                                                             #Mainmenu and it's details
+    name: "Mainmenu"
+    Image:                                                                 #For loading image
+        source: 'C:\\Users\\pkarn\\PycharmProjects\\CrimePrediction\\wallpaper2.jpg'
+        allow_stretch: True
+        keep_ratio: False
+
+    FloatLayout:                                                            #FloatLayout for the first screen
+
+        ActionBar:
+            background_color: (.18, .5, .95, .5)
+            pos_hint: {'top':1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: 'CrimePred'
+                    with_previous: False
+                ActionButton:
+                    text: 'Change Location'
+                    pos_hint: {"center_x": .2, "center_y":0.5}
+
+
+
+        Button:
+            text: "Crime Rate"
+            pos_hint: {"center_x": 0.5, "center_y":0.85}
+            on_release: app.root.current = 'second'
+        Button:
+            text: "Criminals Around You"
+            pos_hint: {"center_x": 0.5, "center_y":0.65}
+            #on_press: self.parent.ids.text = 'district'
+            on_release: app.root.current = 'six'
+
+
+        Button:
+            text: "Probable Suspect"
+            pos_hint: {"center_x": 0.5,"center_y":0.45}
+            on_release: app.root.current = 'third'
+        Button:
+            text: "Crime Report"
+            pos_hint: {"center_x": 0.5, "center_y":0.25}
+            on_release: app.root.current = 'fourth'
+        Button:
+            text: "Forum"
+            pos_hint: {"center_x": 0.5, "center_y":0.05}
+            on_release: app.root.current = 'fifth'
+
+
+<SecondScreen>:                                                     #Crime Rate and it's details
+    name: 'second'
+
+    Image:
+        source: 'C:\\Users\\pkarn\\PycharmProjects\\CrimePrediction\\wallpaper2.jpg'
+        allow_stretch: True
+        keep_ratio: False
+    FloatLayout:
+
+        Button:
+            text: "Crime rate A"
+            pos_hint: {"center_x": 0.5, "center_y":0.8}
+        Button:
+            text: "Crime rate B"
+            pos_hint: {"center_x": 0.5,"center_y":0.5}
+        Button:
+            text: "Return to Main Menu"
+            pos_hint: {"center_x": 0.5, "center_y":0.2}
+            on_release: app.root.current = 'Mainmenu'
+<ThirdScreen>:                                                             #Probable Suspect and it's details
+    name: "third"
+    ward:ward                                                              #Matching the id with variables from the class to get the results
+    district:district
+    beat:beat
+    community_area:community_area
+    primary_type:primary_type
+    location:location
+    resultt:resultt
+
+    Image:
+        source: 'C:\\Users\\pkarn\\PycharmProjects\\CrimePrediction\\wallpaper3.jpg'
+        allow_stretch: True
+        keep_ratio: False
+    FloatLayout:
+        #orientation: "vertical"
+        TextInput:                                                                 #Text box for the user to input
+            id :ward
+            pos_hint: {"center_x":0.5, "center_y":0.95}
+            size_hint:.3,.1
+            #text:"enter the ward number"
+            multiline:False
+        Label:
+            id:aaaa
+            text:"enter the ward number"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.95}
+        TextInput:
+            id :district
+            pos_hint: {"center_x":0.5, "center_y":0.8}
+            size_hint:.3,.1
+            #text:"enter the district number"
+            multiline:False
+        Label:
+            id:aaaaww
+            text:"enter the district number"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.8}
+        TextInput:
+            id :beat
+            pos_hint: {"center_x":0.5, "center_y":0.65}
+            size_hint:.3,.1
+            #text:"enter the beat number"
+            multiline:False
+        Label:
+            id:aaaaeee
+            text:"enter the beat number"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.65}
+        TextInput:
+            id :community_area
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            size_hint:.3,.1
+            #text:"enter the community area number"
+            multiline:False
+        Label:
+            id:aaaa
+            text:"enter the Community Area Number"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.5}
+        TextInput:
+            id :primary_type
+            pos_hint: {"center_x":0.5, "center_y":0.35}
+            size_hint:.3,.1
+            #text:"enter the primary type number"
+            multiline:False
+        Label:
+            id:aaaa
+            text:"enter the Primary Type"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.35}
+        TextInput:
+            id :location
+            pos_hint: {"center_x":0.5, "center_y":0.2}
+            size_hint:.2,.1
+            #text:"enter the location description number"
+            multiline:False
+        Label:
+            id:aaaa
+            text:"enter the Location Description"
+            #text_size: self.size
+            size: .2,.1
+            pos_hint: {"center_x":0.2, "center_y":0.2}
+        Button:
+            text: "Submit The Details Information"
+            size_hint:.2,.1
+            pos_hint: {"center_x": 0.5, "center_y":0.1}
+            on_press : root.btn()
+            #on_release:app.root.current = 'fifth'
+        Button:
+            text: "Back To Mainmenu"
+            size_hint:.2,.1
+            pos_hint: {"center_x": 0.8, "center_y":0.1}
+            on_release: app.root.current = 'Mainmenu'
+        Label:
+            id :resultt
+            pos_hint: {"center_x":0.8, "center_y":0.5}
+            size_hint:.3,.1
+            text:""
+            multiline:False
+
+<FourthScreen>:                                                                #Report Crime and it's details
+    name: 'fourth'
+    report:report
+    report_file:report_file
+    Image:
+        source: 'C:\\Users\\pkarn\\PycharmProjects\\CrimePrediction\\wallpaper3.jpg'
+        allow_stretch: True
+        keep_ratio: False
+    BoxLayout:
+        TextInput:
+            id :report
+            #pos_hint: {"center_x":0.5, "center_y":0.6}
+            size_hint:.3,.1
+            #text:"enter the location description number"
+            multiline:False
+        Button:
+            text: "Save the report"
+            #pos_hint: {"center_x": 0.5, "center_y":0.8}
+            on_press : root.btn1()
+        Button:
+            text: "Back to Main menu"
+            #pos_hint: {"center_x": 0.5, "center_y":0.8}
+            on_release: app.root.current = 'Mainmenu'
+        Label:
+            id:report_file
+            text:""
+<FifthScreen> :                                                        
+    name: 'fifth'
+<SixthScreen>:                                                              #Suspect Around you                             
+    name: 'six'
+    ward1:ward1
+    district1:district1
+    beat1:beat1
+    community_area1:community_area1
+    ress:ress
+
+    Image:
+        source: 'C:\\Users\\pkarn\\PycharmProjects\\CrimePrediction\\wallpaper3.jpg'
+        allow_stretch: True
+        keep_ratio: False
+    FloatLayout:
+        TextInput:
+            id :ward1
+            pos_hint: {"center_x":0.5, "center_y":0.9}
+            size_hint:.3,.1
+            #text_hint:"enter the ward number"
+            multiline:False
+        Label:
+            id :www
+            pos_hint: {"center_x":0.2, "center_y":0.9}
+            size_hint:.3,.1
+            text:"Enter the ward number"
+            multiline:False
+        TextInput:
+            id :district1
+            pos_hint: {"center_x":0.5, "center_y":0.7}
+            size_hint:.3,.1
+            #text:"enter the district number"
+            multiline:False
+        Label:
+            id :wwwa
+            pos_hint: {"center_x":0.2, "center_y":0.7}
+            size_hint:.3,.1
+            text:"Enter the District number"
+            multiline:False
+        TextInput:
+            id :beat1
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            size_hint:.3,.1
+            #text:"enter the beat number"
+            multiline:False
+        Label:
+            id :wwwaa
+            pos_hint: {"center_x":0.2, "center_y":0.5}
+            size_hint:.3,.1
+            text:"Enter The Beat Number"
+            multiline:False
+        TextInput:
+            id :community_area1
+            pos_hint: {"center_x":0.5, "center_y":0.3}
+            size_hint:.3,.1
+            #text:"enter the community area number"
+            multiline:False
+        Label:
+            id :wwwff
+            pos_hint: {"center_x":0.2, "center_y":0.3}
+            size_hint:.3,.1
+            text:"Enter the Community Area Number"
+            multiline:False
+        Button:
+            text: "Submit The Details Information"
+            pos_hint: {"center_x": 0.5, "center_y":0.1}
+            size_hint:.3,.1
+            on_press : root.btn2()
+        Button:
+            text: "Back To Mainmenu"
+            pos_hint: {"center_x": 0.8, "center_y":0.1}
+            size_hint:.2,.1
+            on_release: app.root.current = 'Mainmenu'
+        Label:
+            id :ress
+            pos_hint: {"center_x":0.8, "center_y":0.5}
+            size_hint:.3,.1
+            text:""
+            multiline:False
+
